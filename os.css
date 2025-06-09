@@ -1,0 +1,207 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 1000px;
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: #0056b3;
+}
+
+/* Input Section */
+.input-section, .processes-display, .visualization-section, .results-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#addProcessForm div {
+    margin-bottom: 10px;
+}
+
+#addProcessForm label {
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+}
+
+#addProcessForm input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(100% - 130px); /* Adjust based on label width */
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#resetProcesses {
+    background-color: #dc3545;
+}
+#resetProcesses:hover {
+    background-color: #c82333;
+}
+
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+}
+
+td {
+    background-color: #fff;
+}
+
+/* Gantt Chart */
+.gantt-chart-container {
+    position: relative; /* For timeline absolute positioning */
+    background-color: #e9ecef;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto; /* Scroll if too wide */
+    margin-bottom: 20px; /* Space for timeline */
+}
+
+#ganttChart {
+    display: flex;
+    height: 50px; /* Height of the bars */
+    position: relative;
+    min-width: 100%; /* Ensure it can expand */
+}
+
+.gantt-block {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+    border-right: 1px solid #fff; /* Separator between blocks */
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0; /* Start hidden for animation */
+    overflow: hidden; /* Clip text if block is too small */
+    white-space: nowrap;
+}
+.gantt-block:last-child {
+    border-right: none;
+}
+
+.gantt-block.idle {
+    background-color: #bbb !important; /* Idle time color */
+    color: #555;
+}
+
+#timeline {
+    display: flex;
+    position: relative;
+    height: 20px; /* Height for timeline numbers */
+    margin-top: 5px; /* Space above numbers */
+    font-size: 0.8em;
+    min-width: 100%;
+}
+
+.timeline-marker {
+    position: absolute; /* Position based on time */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #555;
+}
+.timeline-marker::before { /* The tick mark */
+    content: '|';
+    font-weight: bold;
+}
+
+#cpuStatus {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Results */
+.averages p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+.averages span {
+    font-weight: normal;
+    color: #0056b3;
+}
+
+/* Animation for newly added rows */
+@keyframes fadeInRow {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.new-row {
+    animation: fadeInRow 0.5s ease-out forwards;
+}
+
+/* Highlight current process being executed */
+.process-table-row.active-process {
+    background-color: #d1ecf1 !important; /* Light blue */
+    font-weight: bold;
+}
+.results-table-row.active-process {
+    background-color: #d1ecf1 !important;
+    font-weight: bold;
+}
